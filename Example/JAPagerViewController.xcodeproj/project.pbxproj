@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0E22669B21AC273600706CC5 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E22669921AC273600706CC5 /* ContentViewController.swift */; };
 		0E22669C21AC273600706CC5 /* JAPageViewDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E22669A21AC273600706CC5 /* JAPageViewDemoController.swift */; };
-		0E22669E21AC284B00706CC5 /* JAPagerViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E22669D21AC284B00706CC5 /* JAPagerViewController.framework */; };
 		26E0E09899BE883F237DAE6C /* Pods_JAPagerViewController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A163309335BFD3EE613A86D /* Pods_JAPagerViewController_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -58,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E22669E21AC284B00706CC5 /* JAPagerViewController.framework in Frameworks */,
 				D76DAB9E0C85FDDF5CC927FE /* Pods_JAPagerViewController_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

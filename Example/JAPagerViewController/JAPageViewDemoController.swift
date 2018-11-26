@@ -11,8 +11,8 @@ import JAPagerViewController
 
 
 class JAPageViewDemoController: UIViewController {
-
-    @IBOutlet weak var pagerView: UIView!
+    
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +50,11 @@ class JAPageViewDemoController: UIViewController {
         
         let pager = JAPagerViewController(pages: [page1,page2, page3, page4, page5, page6, page7])
         addChild(pager)
-        pager.view.frame = view.bounds
-        view.addSubview(pager.view)
+        pager.view.frame = containerView.bounds
+        containerView.addSubview(pager.view)
         pager.didMove(toParent: self)
         pager.tabMenuHeight = 55
+        //pager.equalTabTitleWidth = true
     }
 
 

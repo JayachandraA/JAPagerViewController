@@ -4,7 +4,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - JAPagerViewController (0.1.0)
+  - JAPagerViewController (0.0.1)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.4)
@@ -20,8 +20,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  JAPagerViewController: a90d92e10f142dc59de3310f33340ff75f48aa16
+  JAPagerViewController: 1f86f83f560218e167f1e0a5a761ad03c6fec605
 
-PODFILE CHECKSUM: 9b78dfbf2691867f1b6ce36ab5941ff72bd7d535
+PODFILE CHECKSUM: b04fa41071c5e9b17646de1f78595670e43aaade
 
 COCOAPODS: 1.5.3
