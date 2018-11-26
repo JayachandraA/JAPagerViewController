@@ -1,0 +1,6 @@
+framework module JAPagerViewController {
+  umbrella header "JAPagerViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}
