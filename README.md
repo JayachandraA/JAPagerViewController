@@ -7,7 +7,7 @@
 
 ## Example
 
-![alt text](https://github.com/JayachandraA/JAPagerViewController/blob/master/Example/pager.png)
+![alt text](https://github.com/JayachandraA/JAPagerViewController/blob/master/Example/pager.png) ![alt text](https://github.com/JayachandraA/JAPagerViewController/blob/development/Example/pager1.png)
 
 Code Usage
 ```swift
