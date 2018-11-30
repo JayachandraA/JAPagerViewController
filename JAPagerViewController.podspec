@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JAPagerViewController'
-  s.version          = '0.1.0'
-  s.summary          = 'JAPagerViewController is a simple pager based view controller to display sequence of views in single view.'
+  s.version          = '0.0.1'
+  s.summary          = 'A simple pager based view controller to display sequence of views in single view.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -26,8 +26,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/JayachandraA/JAPagerViewController.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/ajchandra15'
 
-  s.ios.deployment_target = '8.0'
-
+  s.ios.deployment_target = '9.0'
+  s.swift_version = '4.2'
   s.source_files = 'JAPagerViewController/Classes/**/*'
   
   # s.resource_bundles = {

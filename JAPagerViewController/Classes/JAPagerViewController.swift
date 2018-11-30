@@ -9,23 +9,85 @@
 import UIKit
 
 
+/// Defines the Tab menu type
+public enum JATabMenuType {
+    /// The tab menu item will be set to the titles
+    case titles( titles: [String])
+    
+    /// The tab menu item will be set to the images
+    case images( defaultImages: [UIImage], selectedImages: [UIImage]?)
+    
+    /// The tab menu item will be set to the `pages`, i.e, UIViewController's title
+    case none
+}
+
+
+/// Defines the Tab menu width
+public enum JATabItemWidthType: Int {
+    
+    /// The tab menu item width will be set to equal size
+    /// While setiing this, `tabEqualWidth` will be given as it's width
+    case equal
+    
+    /// The tab menu item width will be calculated based on content
+    case dynamic
+    
+    /// While setting this, it is required to set the `tabItemCustomWidth` property value
+    /// SO that the width will be calculated for tab menu item
+    case custom
+}
+
 
 public class JAPagerViewController: UIViewController {
-
-    @IBOutlet weak private var tabsMenuView: UIView!
-    @IBOutlet weak private var contentCollectionView: UICollectionView!
-    @IBOutlet weak private var tabsCollectionView: UICollectionView!
-    @IBOutlet weak private var tabsMenuHeightConstraint: NSLayoutConstraint!
-
     
-    open var pages = [UIViewController]() {
-        didSet{
+    @IBOutlet weak fileprivate var tabsMenuView: UIView!
+    @IBOutlet weak fileprivate var containerScrollView: UIScrollView!
+    @IBOutlet weak fileprivate var tabsCollectionView: UICollectionView!
+    @IBOutlet weak fileprivate var tabsMenuHeightConstraint: NSLayoutConstraint!
+    
+    
+    /// The Tab meu item width will be set based on this property value
+    open var tabItemWidthType: JATabItemWidthType = .equal {
+        didSet {
             reload()
         }
     }
-    open var equalTabTitleWidth: Bool = false
-    open var tabTitleWidth: CGFloat = 80
-    open var selectedIndex: Int = 0
+    
+    
+    /// The Tab meu item appearance will be set based on this property value
+    open var tabMenuType: JATabMenuType = .none {
+        didSet {
+            reload()
+        }
+    }
+    
+    /// Thab menu item width will be set to its custom width
+    open var tabItemCustomWidth: CGFloat = 0 {
+        didSet {
+            reload()
+        }
+    }
+    
+    
+    /// Customize the tab menu item width based on this property
+    /// The `tabEqualWidth` will be used when the 'tabItemWidthType' is set to `.equal`
+    /// For more see `JATabItemWidthType`
+    open var tabEqualWidth: CGFloat = 80 {
+        didSet {
+            reload()
+        }
+    }
+    
+    
+    /// The current selcted content page will be displayed based on this property
+    open var selectedPageIndex: Int = 0 {
+        didSet {
+            scrollContent(to: selectedPageIndex)
+        }
+    }
+    
+    
+    /// The custom tab menu height will be given as this property
     open var tabMenuHeight: CGFloat = 44 {
         didSet {
             if let heightConstraint = tabsMenuHeightConstraint {
@@ -34,9 +96,57 @@ public class JAPagerViewController: UIViewController {
             }
         }
     }
+    
+    /// Tab menu background color will be set to this property
+    open var tabMenuBackgroundColor: UIColor = UIColor.gray.withAlphaComponent(0.3) {
+        didSet {
+            reload()
+        }
+    }
+    
+    /// The default tab menu item color will be given as this property
+    open var tabTitleColor: UIColor = UIColor.lightGray {
+        didSet {
+            reload()
+        }
+    }
+    
+    /// The default tab menu item font will be given as this property
+    open var tabTitleFont: UIFont = UIFont.systemFont(ofSize: 14) {
+        didSet {
+            reload()
+        }
+    }
+    
+    /// The selected tab menu item color will be given as this property
+    open var selectedTabTitleColor: UIColor = UIColor.darkGray {
+        didSet {
+            reload()
+        }
+    }
+    
+    /// The selected tab menu item font will be given as this property
+    open var selectedTabTitleFont: UIFont = UIFont.systemFont(ofSize: 15) {
+        didSet {
+            reload()
+        }
+    }
+    
+    /// The selected bar color for the currently selected tab menu item
+    open var selectedTabIndicatorColor: UIColor = UIColor.red {
+        didSet {
+            reload()
+        }
+    }
+    
+    
+    //MARK: - Private properties
+    var currentPage: Int = 0
+    var pages = [UIViewController]()
 
     
-    init(pages aPages: [UIViewController]) {
+    /// Default initializer with pages
+    public init(pages aPages: [UIViewController]) {
         super.init(nibName: "JAPagerViewController", bundle: Bundle(for: JAPagerViewController.self))
         pages = aPages
     }
@@ -47,119 +157,154 @@ public class JAPagerViewController: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
-        tabsCollectionView.register(JATabViewCell.self, forCellWithReuseIdentifier: "JATabViewCell")
-        tabsCollectionView.register(UINib(nibName: "JATabViewCell", bundle:nil), forCellWithReuseIdentifier: "JATabViewCell")
-
         
-        contentCollectionView.register(JATabContentCell.self, forCellWithReuseIdentifier: "JATabContentCell")
+        setupContents()
+        
+        tabsCollectionView.register(JATabViewCell.self, forCellWithReuseIdentifier: "JATabViewCell")
+        tabsCollectionView.register(UINib(nibName: "JATabViewCell", bundle:Bundle(for: JATabViewCell.self)), forCellWithReuseIdentifier: "JATabViewCell")
     }
-
+    
+    func setupContents() {
+        for page in pages {
+            addChild(page)
+            containerScrollView.addSubview(page.view)
+            page.didMove(toParent: self)
+        }
+    }
+    
     func reload() {
+        tabsCollectionView.backgroundColor = tabMenuBackgroundColor
         tabsCollectionView.reloadData()
-        contentCollectionView.reloadData()
+        updateContentFrames()
     }
-
-
+    
+    func updateContentFrames() {
+        let containerScrollViewSize = containerScrollView.frame.size
+        let contentScrollWidth = containerScrollViewSize.width * CGFloat(pages.count)
+        containerScrollView.contentSize = CGSize(width: contentScrollWidth, height: containerScrollViewSize.height)
+        
+        let initialY: CGFloat = 0.0
+        var initialX: CGFloat = 0.0
+        for (index, page) in pages.enumerated() {
+            initialX = containerScrollViewSize.width * CGFloat(index)
+            page.view.frame = CGRect(x: initialX, y: initialY, width: containerScrollViewSize.width, height: containerScrollViewSize.height)
+        }
+    }
+    
+    public override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateContentFrames()
+    }
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 
 extension JAPagerViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        if collectionView ==  contentCollectionView{
-            return pages.count
-        }
+                               numberOfItemsInSection section: Int) -> Int {
         return pages.count
     }
     
     public func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView ==  contentCollectionView{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JATabContentCell", for: indexPath) as! JATabContentCell
-            let page = pages[indexPath.row]
-            addChild(page)
-            cell.addSubview(page.view)
-            page.didMove(toParent: self)
-            return cell
-        }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JATabViewCell", for: indexPath) as! JATabViewCell
-            cell.tabNameLabel.text = pages[indexPath.row].title
-            if indexPath.row == selectedIndex {
-                cell.tabNameLabel.textColor = UIColor.red
-                cell.selectedIndicatiorView.backgroundColor = UIColor.green
-                cell.selectedIndicatiorView.alpha = 0.0
-                UIView.animate(withDuration: 0.5) {
-                    cell.selectedIndicatiorView.alpha = 1.0
-                }
-            }else{
-                cell.tabNameLabel.textColor = UIColor.black
-                cell.selectedIndicatiorView.backgroundColor = UIColor.white
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JATabViewCell", for: indexPath) as! JATabViewCell
+        switch tabMenuType {
+        case .images(let defaultImages, let selectedImages):
+            if let lSelectedImages = selectedImages, indexPath.row == currentPage {
+                cell.imageView.image = lSelectedImages[indexPath.row]
+            }else {
+                cell.imageView.image = defaultImages[indexPath.row]
             }
-            return cell
+        case .titles(let titles):
+            cell.tabNameLabel.text = titles[indexPath.row]
+            if indexPath.row == currentPage {
+                cell.tabNameLabel.textColor = selectedTabTitleColor
+            }else {
+                cell.tabNameLabel.textColor = tabTitleColor
+            }
+        case .none:
+            cell.tabNameLabel.text = pages[indexPath.row].title
+            if indexPath.row == currentPage {
+                cell.tabNameLabel.textColor = selectedTabTitleColor
+            }else {
+                cell.tabNameLabel.textColor = tabTitleColor
+            }
         }
+        
+        
+        // show selected tab indictor
+        if indexPath.row == currentPage {
+            cell.selectedIndicatiorView.alpha = 0.0
+            cell.selectedIndicatiorView.backgroundColor = selectedTabIndicatorColor
+            UIView.animate(withDuration: 0.5) {
+                cell.selectedIndicatiorView.alpha = 1.0
+            }
+        }else{
+            cell.selectedIndicatiorView.backgroundColor = UIColor.clear
+        }
+        return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView ==  contentCollectionView{
-            return collectionView.frame.size
-        }
-        
-        if equalTabTitleWidth {
-            let estimatedSize = CGSize(width: tabTitleWidth,
+                               layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch tabItemWidthType {
+        case .custom:
+            return CGSize(width: tabItemCustomWidth, height: tabMenuHeight)
+        case .dynamic:
+            let text = NSString(string: pages[indexPath.row].title!)
+            let size = text.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 23)])
+            return CGSize(width: size.width, height: tabMenuHeight)
+        case .equal:
+            let estimatedSize = CGSize(width: tabEqualWidth,
                                        height: tabMenuHeight)
             return estimatedSize
         }
-        
-        let text = NSString(string: pages[indexPath.row].title!)
-        let size = text.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 23)])
-        return CGSize(width: size.width, height: tabMenuHeight)
     }
 }
 
 extension JAPagerViewController: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == tabsCollectionView {
-            selectedIndex = indexPath.row
-            let indexPathToScrollContent = IndexPath(item: selectedIndex, section: 0)
-            contentCollectionView.scrollToItem(at: indexPathToScrollContent, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
-            collectionView.reloadData()
-        }
+        scrollContent(to: indexPath.row)
     }
 }
 
 extension JAPagerViewController: UIScrollViewDelegate {
+    
+    fileprivate func scrollContent(to page: Int) {
+        currentPage = page
+        let containerWidth = containerScrollView.frame.size.width
+        let containerHeight = containerScrollView.frame.size.height
+        let initialY: CGFloat = 0.0
+        let contentFrameToScroll = CGRect(x: containerWidth*CGFloat(page), y: initialY, width: containerWidth, height: containerHeight)
+        containerScrollView.scrollRectToVisible(contentFrameToScroll, animated: true)
+        scrollTabMenu(to: page)
+    }
+    
+    fileprivate func scrollTabMenu(to selectedTab: Int) {
+        let menuIndexPathToScroll = IndexPath(row: selectedTab, section: 0)
+        tabsCollectionView.scrollToItem(at: menuIndexPathToScroll, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        tabsCollectionView.reloadData()
+    }
+    
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let visibleCells = contentCollectionView.visibleCells
-        if visibleCells.count > 0 &&  scrollView == contentCollectionView{
-            if let currentCellIndexPath = contentCollectionView.indexPath(for: visibleCells.first!) {
-                selectedIndex = currentCellIndexPath.row
-                let indexPathToScroll = IndexPath(item: selectedIndex, section: 0)
-                tabsCollectionView.scrollToItem(at: indexPathToScroll, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
-                tabsCollectionView.reloadData()
-            }
+        if scrollView == containerScrollView {
+            let page: Int = Int(scrollView.contentOffset.x / scrollView.frame.size.width);
+            scrollContent(to: page)
         }
     }
-}
-
-
-
-
-
-public class JATabContentCell: UICollectionViewCell {
-    
 }
