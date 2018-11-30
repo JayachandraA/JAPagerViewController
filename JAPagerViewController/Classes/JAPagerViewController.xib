@@ -4,14 +4,15 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JAPagerViewController" customModule="JAPagerExample" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JAPagerViewController" customModule="JAPagerViewController" customModuleProvider="target">
             <connections>
-                <outlet property="contentCollectionView" destination="0Ox-ML-ReM" id="Fuc-aw-mAg"/>
+                <outlet property="containerScrollView" destination="ZLH-Bh-t02" id="mkN-7f-XJh"/>
                 <outlet property="tabsCollectionView" destination="uIk-XW-1rH" id="f8S-qU-T3k"/>
                 <outlet property="tabsMenuHeightConstraint" destination="IJb-9f-QfQ" id="YeQ-XN-via"/>
                 <outlet property="tabsMenuView" destination="pg3-OY-2n9" id="q4K-Rc-Xpp"/>
@@ -59,30 +60,22 @@
                         <constraint firstItem="GIV-VV-71y" firstAttribute="leading" secondItem="pg3-OY-2n9" secondAttribute="leading" id="zyF-bM-CXU"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0Ox-ML-ReM">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLH-Bh-t02">
                     <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="zhM-IL-McP">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="9vm-iq-Nwm"/>
-                        <outlet property="delegate" destination="-1" id="6W8-VP-Odw"/>
+                        <outlet property="delegate" destination="-1" id="8uy-gW-l8A"/>
                     </connections>
-                </collectionView>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0Ox-ML-ReM" secondAttribute="bottom" id="O5t-Hw-iMC"/>
+                <constraint firstItem="ZLH-Bh-t02" firstAttribute="top" secondItem="pg3-OY-2n9" secondAttribute="bottom" id="1cR-Mj-eWn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZLH-Bh-t02" secondAttribute="bottom" id="8pY-ol-d45"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZLH-Bh-t02" secondAttribute="trailing" id="B64-aT-FW3"/>
+                <constraint firstItem="ZLH-Bh-t02" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="THB-Se-g0Z"/>
                 <constraint firstItem="pg3-OY-2n9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tfa-EI-wxz"/>
-                <constraint firstItem="0Ox-ML-ReM" firstAttribute="top" secondItem="pg3-OY-2n9" secondAttribute="bottom" id="Z3Z-aa-jcu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pg3-OY-2n9" secondAttribute="trailing" id="gAx-6l-nof"/>
                 <constraint firstItem="pg3-OY-2n9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="leU-IX-g4z"/>
-                <constraint firstItem="0Ox-ML-ReM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ppm-lk-ElI"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Ox-ML-ReM" secondAttribute="trailing" id="xQn-OR-GkT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

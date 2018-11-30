@@ -12,16 +12,14 @@ class ContentViewController: UIViewController {
 
     var emoji = ""
     
+    @IBOutlet weak var demoLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        let label = UILabel(frame: view.bounds)
-        label.text = emoji
-        label.font = UIFont.systemFont(ofSize: 100)
-        label.textAlignment = .center
-        view.addSubview(label)
+        demoLabel.text = emoji
     }
     
 
