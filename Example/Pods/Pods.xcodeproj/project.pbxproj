@@ -44,22 +44,22 @@
 		02DB1B74B0933AC0A426BC76DCD10C0C /* Pods-JAPagerViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JAPagerViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		11F9885710C41383367BE6F38FFE57C2 /* JAPagerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JAPagerViewController.swift; path = JAPagerViewController/Classes/JAPagerViewController.swift; sourceTree = "<group>"; };
 		1FC2ABB630AFBC1B7B05A4723A877E1B /* JATabViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JATabViewCell.swift; path = JAPagerViewController/Classes/JATabViewCell.swift; sourceTree = "<group>"; };
-		261E5914C65DCE7AAF05DAFFFCD82638 /* Pods_JAPagerViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JAPagerViewController_Tests.framework; path = "Pods-JAPagerViewController_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		261E5914C65DCE7AAF05DAFFFCD82638 /* Pods_JAPagerViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JAPagerViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE2E7435B7D3E35CAFB4486C007B72F /* Pods-JAPagerViewController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JAPagerViewController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		33A5FDE0B535CF20435C5BBBF490C647 /* Pods-JAPagerViewController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JAPagerViewController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3B694DD881B976F8ACB75A9F5CE507F1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		3B694DD881B976F8ACB75A9F5CE507F1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		53DCC31BCC1FFAAEAC011C3A032F4C3F /* Pods-JAPagerViewController_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JAPagerViewController_Example-umbrella.h"; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6DC26DFDE123108B256C4523A58661B3 /* JAPagerViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = JAPagerViewController.xib; path = JAPagerViewController/Classes/JAPagerViewController.xib; sourceTree = "<group>"; };
 		6DF87420A47619941C4CB71B1DA42719 /* Pods-JAPagerViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JAPagerViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7567B299DF2F8480454BF8B435F15498 /* JATabViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = JATabViewCell.xib; path = JAPagerViewController/Classes/JATabViewCell.xib; sourceTree = "<group>"; };
-		7C1083E3A51FB0F73F9FEC7AFFFD3C35 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		7C1083E3A51FB0F73F9FEC7AFFFD3C35 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		83915A8C5B900C5AC94F78A1D2B7F573 /* Pods-JAPagerViewController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JAPagerViewController_Example.modulemap"; sourceTree = "<group>"; };
 		86CAFC3C5C384C22CD6D3403F893F428 /* JAPagerViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JAPagerViewController-umbrella.h"; sourceTree = "<group>"; };
-		91222C452C8803D783FD5D80EAFE85E2 /* Pods_JAPagerViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JAPagerViewController_Example.framework; path = "Pods-JAPagerViewController_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		93468225EF4B416EEACE4DEB609D1320 /* JAPagerViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JAPagerViewController.framework; path = JAPagerViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91222C452C8803D783FD5D80EAFE85E2 /* Pods_JAPagerViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JAPagerViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93468225EF4B416EEACE4DEB609D1320 /* JAPagerViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JAPagerViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		935A8F5512935BE020FBFAC336A4B6B4 /* Pods-JAPagerViewController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JAPagerViewController_Example-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		97B3396A554F41F89FE8D2051155AD5F /* Pods-JAPagerViewController_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JAPagerViewController_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		9939CAFF92597E3773A1451900A3DF73 /* Pods-JAPagerViewController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JAPagerViewController_Tests-umbrella.h"; sourceTree = "<group>"; };
 		A08CFC0340AD1F36EF07967F9A88C446 /* Pods-JAPagerViewController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JAPagerViewController_Tests.modulemap"; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		C08189EC705146BCD4AB16BBDC9B63DD /* JAPagerViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JAPagerViewController.modulemap; sourceTree = "<group>"; };
 		D04BB74BAB0210A644B5E11484D3C0E6 /* Pods-JAPagerViewController_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JAPagerViewController_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		D9767094B9265C74C8BDEE9CB0C45BEF /* Pods-JAPagerViewController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JAPagerViewController_Example-dummy.m"; sourceTree = "<group>"; };
-		DBB7D201F43F07E6200D18AACB122A59 /* JAPagerViewController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = JAPagerViewController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DBB7D201F43F07E6200D18AACB122A59 /* JAPagerViewController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = JAPagerViewController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DE1FA28EE7311E1DA92293E7A3643D83 /* Pods-JAPagerViewController_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JAPagerViewController_Example-resources.sh"; sourceTree = "<group>"; };
 		E125316CAABA8897D4CF9A9C49DE820A /* JAPagerViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JAPagerViewController-prefix.pch"; sourceTree = "<group>"; };
 		E6398797DC7A79BD3A56C989C36181E7 /* Pods-JAPagerViewController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JAPagerViewController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -713,6 +713,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

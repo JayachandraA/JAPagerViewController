@@ -203,8 +203,9 @@ public class JAPagerViewController: UIViewController {
         let label = UILabel()
         label.font = font
         label.text = title
+        label.numberOfLines = 1
         label.sizeToFit()
-        return label.frame.width
+        return label.frame.width + (label.frame.width * 0.3)
     }
 }
 
