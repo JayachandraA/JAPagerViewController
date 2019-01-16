@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JAPagerViewController'
-  s.version          = '0.0.2'
+  s.version          = '1.0'
   s.summary          = 'A simple pager based view controller to display sequence of views in single view.'
 
 # This description is used to generate tags and improve search results.
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.description      = 'JAPagerViewController is a simple pager based view controller to display sequence of views in single view.'
 
   s.homepage         = 'https://github.com/JayachandraA/JAPagerViewController'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots     = 'https://github.com/JayachandraA/JAPagerViewController/blob/development/Example/pager1.png?raw=true'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'JayachandraA' => 'ajchandra15@gmail.com' }
   s.source           = { :git => 'https://github.com/JayachandraA/JAPagerViewController.git', :tag => s.version.to_s }
