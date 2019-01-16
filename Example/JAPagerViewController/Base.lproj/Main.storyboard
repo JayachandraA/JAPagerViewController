@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Dashboard-->
+        <!--Page View Demo Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="JAPageViewDemoController" customModule="JAPagerViewController_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,10 +41,7 @@
                             <constraint firstItem="urZ-Tr-Fty" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="yCy-1Y-VNa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Dashboard" id="EW1-qp-Ran">
-                        <barButtonItem key="leftBarButtonItem" image="home" id="0no-YJ-KFp"/>
-                        <barButtonItem key="rightBarButtonItem" image="more_options" id="nSA-vq-CfD"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="EW1-qp-Ran"/>
                     <connections>
                         <outlet property="imageContainerView" destination="P0X-IS-3yB" id="qn3-tR-E2a"/>
                         <outlet property="titleContainerView" destination="Z5g-Vg-jui" id="BQN-4P-he6"/>
@@ -108,8 +105,4 @@
             <point key="canvasLocation" x="229.59999999999999" y="-564.46776611694156"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="home" width="32" height="32"/>
-        <image name="more_options" width="24" height="24"/>
-    </resources>
 </document>

@@ -1,5 +1,5 @@
 PODS:
-  - JAPagerViewController (0.0.1)
+  - JAPagerViewController (0.0.2)
 
 DEPENDENCIES:
   - JAPagerViewController (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JAPagerViewController: e1826a6cecbef7416b4facba1b13347f0d9c4e9e
+  JAPagerViewController: b91f9e4d510d4b772dea2ac379100e0e605342ef
 
 PODFILE CHECKSUM: 7e7092e43e903e08238be37805b367b9900e70ef
 

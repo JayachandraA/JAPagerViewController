@@ -50,14 +50,15 @@ class JAPageViewDemoController: UIViewController {
 
         
         let pager = JAPagerViewController(pages: [page1,page2, page3, page4, page5, page6, page7])
-        addChild(pager)
+
         pager.view.frame = titleContainerView.bounds
+        addChild(pager)
         titleContainerView.addSubview(pager.view)
         pager.didMove(toParent: self)
         pager.tabMenuHeight = 55
-        pager.tabItemWidthType = .custom
-        pager.tabItemCustomWidth = view.frame.size.width/2
-        pager.selectedTabIndicatorColor = UIColor.green
+        pager.tabItemWidthType = .dynamic
+        pager.selectedTabTitleColor = UIColor.red
+        pager.selectedTabTitleFont = UIFont.boldSystemFont(ofSize: 12)
         
         
         
@@ -85,7 +86,7 @@ class JAPageViewDemoController: UIViewController {
         imagePager.tabItemWidthType = .custom
         imagePager.tabItemCustomWidth = view.frame.size.width/3
         imagePager.tabMenuType = .images(defaultImages: [#imageLiteral(resourceName: "home"), #imageLiteral(resourceName: "trending"), #imageLiteral(resourceName: "profile"),], selectedImages: nil)
-
+ 
     }
 
 

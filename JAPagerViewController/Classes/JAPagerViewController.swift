@@ -126,7 +126,7 @@ public class JAPagerViewController: UIViewController {
     }
     
     /// The selected tab menu item font will be given as this property
-    open var selectedTabTitleFont: UIFont = UIFont.systemFont(ofSize: 15) {
+    open var selectedTabTitleFont: UIFont = UIFont.boldSystemFont(ofSize: 15) {
         didSet {
             reload()
         }
@@ -199,17 +199,13 @@ public class JAPagerViewController: UIViewController {
         updateContentFrames()
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func getTitleWidth(title: String, font: UIFont) ->CGFloat {
+        let label = UILabel()
+        label.font = font
+        label.text = title
+        label.sizeToFit()
+        return label.frame.width
+    }
 }
 
 
@@ -222,6 +218,7 @@ extension JAPagerViewController: UICollectionViewDataSource, UICollectionViewDel
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JATabViewCell", for: indexPath) as! JATabViewCell
+        cell.tabNameLabel.font = tabTitleFont
         switch tabMenuType {
         case .images(let defaultImages, let selectedImages):
             if let lSelectedImages = selectedImages, indexPath.row == currentPage {
@@ -233,6 +230,7 @@ extension JAPagerViewController: UICollectionViewDataSource, UICollectionViewDel
             cell.tabNameLabel.text = titles[indexPath.row]
             if indexPath.row == currentPage {
                 cell.tabNameLabel.textColor = selectedTabTitleColor
+                cell.tabNameLabel.font = selectedTabTitleFont
             }else {
                 cell.tabNameLabel.textColor = tabTitleColor
             }
@@ -240,6 +238,7 @@ extension JAPagerViewController: UICollectionViewDataSource, UICollectionViewDel
             cell.tabNameLabel.text = pages[indexPath.row].title
             if indexPath.row == currentPage {
                 cell.tabNameLabel.textColor = selectedTabTitleColor
+                cell.tabNameLabel.font = selectedTabTitleFont
             }else {
                 cell.tabNameLabel.textColor = tabTitleColor
             }
@@ -266,9 +265,24 @@ extension JAPagerViewController: UICollectionViewDataSource, UICollectionViewDel
         case .custom:
             return CGSize(width: tabItemCustomWidth, height: tabMenuHeight)
         case .dynamic:
-            let text = NSString(string: pages[indexPath.row].title!)
-            let size = text.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 23)])
-            return CGSize(width: size.width, height: tabMenuHeight)
+            switch tabMenuType {
+            case .titles(let titles):
+                if indexPath.row == currentPage{
+                    let width = getTitleWidth(title: titles[indexPath.row], font: selectedTabTitleFont)
+                    return CGSize(width: width, height: tabMenuHeight)
+                }
+                let width = getTitleWidth(title: titles[indexPath.row], font: tabTitleFont)
+                return CGSize(width: width, height: tabMenuHeight)
+            case .images(_, _):
+                return CGSize(width: tabMenuHeight, height: tabMenuHeight)
+            case .none:
+                if indexPath.row == currentPage{
+                    let width = getTitleWidth(title: pages[indexPath.row].title!, font: selectedTabTitleFont)
+                    return CGSize(width: width, height: tabMenuHeight)
+                }
+                let width = getTitleWidth(title: pages[indexPath.row].title!, font: tabTitleFont)
+                return CGSize(width: width, height: tabMenuHeight)
+            }
         case .equal:
             let estimatedSize = CGSize(width: tabEqualWidth,
                                        height: tabMenuHeight)
