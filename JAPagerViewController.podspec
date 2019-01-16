@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JAPagerViewController'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'A simple pager based view controller to display sequence of views in single view.'
 
 # This description is used to generate tags and improve search results.

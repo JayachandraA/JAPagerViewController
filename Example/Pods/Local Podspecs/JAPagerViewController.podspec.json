@@ -1,6 +1,6 @@
 {
   "name": "JAPagerViewController",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "summary": "A simple pager based view controller to display sequence of views in single view.",
   "description": "JAPagerViewController is a simple pager based view controller to display sequence of views in single view.",
   "homepage": "https://github.com/JayachandraA/JAPagerViewController",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/JayachandraA/JAPagerViewController.git",
-    "tag": "0.0.1"
+    "tag": "0.0.2"
   },
   "social_media_url": "https://twitter.com/ajchandra15",
   "platforms": {
